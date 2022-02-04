@@ -13,6 +13,8 @@
 (setq display-line-numbers-type nil)
 (setq fancy-splash-image "~/Pictures/8bitwinter2.png")
 #+end_src
+** TODO [[https://www.reddit.com/r/emacs/comments/shzif1/n%CE%BBno_font_stack/][NΛNO font stack : emacs]] [2022-02-04 pią 18:18]
+
 * keymap
 #+begin_src emacs-lisp
 (setq-default evil-escape-key-sequence "ii")
@@ -310,6 +312,10 @@ would be cool to have
  ;; (exwm-enable)
  ;; )
 #+end_src
+*** TODO [[https://gitlab.com/nbarrientos/dotfiles][Nacho Barrientos Barrientos / dotfiles · GitLab]] [2022-02-04 pią 18:01]
+https://www.reddit.com/r/emacs/comments/sihmxs/flat_bufferbased_web_browsing_with_exwm_and/
+awesome experience during buffer switching with exwm and browser
+
 * packages
 ** TODO activity-watch
 #+begin_src emacs-lisp
@@ -409,6 +415,8 @@ would be cool to have
         :ne "M-T" #'calibredb-set-metadata--title
         :ne "M-c" #'calibredb-set-metadata--comments))
 #+end_src
+** TODO discord
+*** [[https://www.aliquote.org/post/discord-bitlbee/][Discord on Emacs - aliquote]] [2021-12-28 wto 18:39]
 ** elfeed-org
 #+begin_src emacs-lisp
 (use-package! elfeed
@@ -466,6 +474,10 @@ would be cool to have
 #+begin_src emacs-lisp
 (use-package! lsp-tailwindcss)
 #+end_src
+*** TODO [[https://emacs-lsp.github.io/lsp-mode/manual-language-docs/lsp-org/][Literate programming using LSP and org-mode(alpha) - LSP Mode - LSP support for Emacs]] [2022-01-04 wto 23:49]
+*** TODO sql
+**** [[https://bitspook.in/blog/using-org-mode-as-an-sql-playground/][Using org-mode as an SQL playground]] [2022-02-04 pią 17:52]
+
 ** TODO lsp-ui
 - https://www.reddit.com/r/emacs/comments/gocrlq/i_really_dont_understand_why_lspui_shows/
 - https://www.reddit.com/r/emacs/comments/i7q3ne/lspuidoc_documentation_with_company/
@@ -484,6 +496,7 @@ would be cool to have
 #+end_src
 ** jupyter
 - jupyter-rust https://github.com/nnicandro/emacs-jupyter/issues/123
+*** TODO [[https://sqrtminusone.xyz/posts/2021-05-01-org-python/][Replacing Jupyter Notebook with Org Mode]] [2021-12-28 wto 21:51]
 ** KILL mini-modeline
 #+begin_src emacs-lisp
 (use-package! mini-modeline
@@ -1056,6 +1069,7 @@ If nil it defaults to `split-string-default-separators', normally
   (setq lsp-rust-server 'rust-analyzer)
   (setq rustic-lsp-server 'rust-analyzer))
 #+end_src
+** TODO slack
 ** TODO company-tabnine
 #+begin_src emacs-lisp
 (use-package company-tabnine
