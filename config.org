@@ -484,14 +484,13 @@ awesome experience during buffer switching with exwm and browser
 - https://emacs.stackexchange.com/questions/19418/get-a-reference-for-the-current-frame
 #+begin_src emacs-lisp
 (use-package! lsp-ui
-  ;;:straight t
-  :hook (lsp-mode . lsp-ui-mode)
   :config
   (setq lsp-ui-sideline-enable t)
+  (setq lsp-ui-doc-enable t)
   (setq lsp-ui-sideline-show-hover t)
   (setq lsp-ui-sideline-show-hover t)
   (setq lsp-ui-doc-position 'at-point)
-  (lsp-ui-doc-show))
+)
 ;;(tooltip-mode)
 #+end_src
 ** jupyter
