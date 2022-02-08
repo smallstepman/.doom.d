@@ -28,6 +28,10 @@
 (package! nyan-mode)
 (package! org-analyzer) ;; TODO
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss")) ;; TODO
+(package! gitmoji
+  :recipe (:host github
+           :repo "janusvm/emacs-gitmoji"
+           :files ("*.el" "data")))
 ;; (package! org-transclusion)
 ;; (package! svg-tag-mode) ;; todo
 ;; (package! org-noter) ;; todo
