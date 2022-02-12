@@ -943,6 +943,18 @@ If nil it defaults to `split-string-default-separators', normally
       deft-extensions '("txt" "org")
       deft-recursive t)
 #+end_src
+** org-anki
+#+begin_src emacs-lisp
+(use-package! org-anki
+  :load-path "/home/m/Desktop/emacs/org-anki/org-anki.el"
+  :config
+  (setq org-anki-default-deck "computer-science")
+  )
+#+end_src
+
+#+RESULTS:
+: org-anki
+
 ** org-caldav
 #+begin_src emacs-lisp
 ;; (use-package! org-caldav
@@ -968,6 +980,22 @@ If nil it defaults to `split-string-default-separators', normally
     :hook (org-mode . org-fragtog-mode) ; this auto-enables it when you enter an org-buffer, remove if you do not want this
 )
 ;; (after! org (plist-put org-format-latex-options :scale 1.3))
+#+end_src
+** org-mind-map
+
+#+begin_src emacs-lisp
+(use-package! org-mind-map
+  :init
+  (require 'ox-org)
+  :config
+  (setq org-mind-map-engine "dot")       ; Default. Directed Graph
+  ;; (setq org-mind-map-engine "neato")  ; Undirected Spring Graph
+  ;; (setq org-mind-map-engine "twopi")  ; Radial Layout
+  ;; (setq org-mind-map-engine "fdp")    ; Undirected Spring Force-Directed
+  ;; (setq org-mind-map-engine "sfdp")   ; Multiscale version of fdp for the layout of large graphs
+  ;; (setq org-mind-map-engine "twopi")  ; Radial layouts
+  ;; (setq org-mind-map-engine "circo")  ; Circular Layout
+  )
 #+end_src
 ** org-roam
 #+begin_src emacs-lisp
@@ -1039,14 +1067,14 @@ If nil it defaults to `split-string-default-separators', normally
 #+end_src
 ** TODO org-transclusion
 #+begin_src emacs-lisp
-;; (use-package! org-transclusion
-;;   :after org
-;;   :init
-;;   (map!
-;;    :map global-map "<f12>" #'org-transclusion-add
-;;    :leader
-;;    :prefix "n"
-;;    :desc "org transclusion mode" "t" #'org-transclusion-mode))
+(use-package! org-transclusion
+  :after org
+  :init
+  (map!
+   :map global-map "<f12>" #'org-transclusion-add
+   :leader
+   :prefix "n"
+   :desc "org transclusion mode" "t" #'org-transclusion-mode))
 #+end_src
 ** ox-hugo
 #+begin_src emacs-lisp
@@ -1097,6 +1125,14 @@ If nil it defaults to `split-string-default-separators', normally
   :config
   (setq treemacs-display-in-side-window nil))
 
+#+end_src
+** TODO vulpea
+#+begin_src emacs-lisp
+(use-package! vulpea
+  ;; hook into org-roam-db-autosync-mode you wish to enable
+  ;; persistence of meta values (see respective section in README to
+  ;; find out what meta means)
+  :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable)))
 #+end_src
 ** yasnippet
 #+begin_src emacs-lisp
