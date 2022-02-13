@@ -1,0 +1,3 @@
+[submodule "org-roam-task-management"]
+	path = org-roam-task-management
+	url = git@gist.github.com:a60e8ccb9aceba031af243dff0d19b2e.git
