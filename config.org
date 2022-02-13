@@ -415,6 +415,14 @@ awesome experience during buffer switching with exwm and browser
         :ne "M-T" #'calibredb-set-metadata--title
         :ne "M-c" #'calibredb-set-metadata--comments))
 #+end_src
+** deft
+#+begin_src emacs-lisp
+(use-package! deft
+  :config
+  (setq deft-directory "~/org"
+      deft-extensions '("txt" "org")
+      deft-recursive t))
+#+end_src
 ** TODO discord
 *** [[https://www.aliquote.org/post/discord-bitlbee/][Discord on Emacs - aliquote]] [2021-12-28 wto 18:39]
 ** elfeed-org
@@ -778,13 +786,6 @@ awesome experience during buffer switching with exwm and browser
 
 
 
-(setq org-html-validation-link nil)  ;; removes validation link from exported html file
-(require 'org-protocol)
-(setq org-protocol-default-template-key "o")
-
-(setq deft-directory "~/org"
-      deft-extensions '("txt" "org")
-      deft-recursive t)
 #+end_src
 ** org-anki
 #+begin_src emacs-lisp

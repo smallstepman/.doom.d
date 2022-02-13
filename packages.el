@@ -41,6 +41,7 @@
 ;;            :repo "smallstepman/org-anki"
 ;;            :files ("*.el")))
 (package! shackle) ;; TODO
+(package! deft)
 
 ;; TODO
 ;; (package! narrow-region-other-window)
