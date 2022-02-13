@@ -22,24 +22,15 @@
 (package! calibredb)
 (package! tree-edit) ;; TODO
 (package! evil-tree-edit) ;; TODO
-(package! kbd-mode    :recipe (:host github :repo "kmonad/kbd-mode"      :files ("kbd-mode.el")))
-(package! motoko-mode :recipe (:host github :repo "dfinity/motoko"       :files ("emacs/motoko-mode.el")))
+(package! kbd-mode    :recipe (:host github :repo "kmonad/kbd-mode" :files ("kbd-mode.el")))
+(package! motoko-mode :recipe (:host github :repo "dfinity/motoko"  :files ("emacs/motoko-mode.el")))
 (package! nyan-mode)
 (package! org-analyzer) ;; TODO
 (package! lsp-tailwindcss :recipe (:host github :repo "merrickluo/lsp-tailwindcss")) ;; TODO
-(package! gitmoji
-  :recipe (:host github
-           :repo "janusvm/emacs-gitmoji"
-           :files ("*.el" "data")))
+(package! gitmoji :recipe (:host github :repo "janusvm/emacs-gitmoji" :files ("*.el" "data")))
 (package! org-transclusion)
-(package! org-mind-map
-  :recipe (:host github
-           :repo "the-ted/org-mind-map"
-           :files ("*.el")))
-;; (package! org-anki
-;;   :recipe (:host github
-;;            :repo "smallstepman/org-anki"
-;;            :files ("*.el")))
+(package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map" :files ("*.el")))
+;; (package! org-anki :recipe (:host github :repo "smallstepman/org-anki" :files ("*.el")))
 (package! shackle) ;; TODO
 (package! deft)
 

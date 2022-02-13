@@ -324,7 +324,7 @@ awesome experience during buffer switching with exwm and browser
 ;;   :config
 ;;   (global-activity-watch-mode))
 #+end_src
-** anki
+** anki-editor
 #+begin_src emacs-lisp
 (use-package! anki-editor
   :after org
@@ -599,8 +599,7 @@ awesome experience during buffer switching with exwm and browser
 ;;                   (outline-flag-region start (point-at-eol) t)
 ;;                   (user-error msg))))))))))
 #+end_src
-*** old
-**** clockin
+*** clockin
 #+begin_src emacs-lisp
 
   ;; (setq org-capture-templates
@@ -685,7 +684,7 @@ awesome experience during buffer switching with exwm and browser
 
 ;; (add-hook! 'post-command-hook 'action-1)
 #+end_src
-**** agenda
+*** agenda
 #+begin_src emacs-lisp
 ;; (defun date-hook-fn ()
 ;;   (goto-char (line-end-position))
@@ -795,10 +794,6 @@ awesome experience during buffer switching with exwm and browser
   (setq org-anki-default-deck "computer-science")
   )
 #+end_src
-
-#+RESULTS:
-: org-anki
-
 ** org-caldav
 #+begin_src emacs-lisp
 ;; (use-package! org-caldav
@@ -924,7 +919,7 @@ awesome experience during buffer switching with exwm and browser
 #+begin_src emacs-lisp
 (use-package! ox-hugo
   :config
-  (setq org-hugo-base-dir "/home/m/Public/anonfagblog"))
+  (setq org-hugo-base-dir "/home/m/Public/afblog"))
 #+end_src
 ** pdf-tools
 #+begin_src emacs-lisp
@@ -988,3 +983,4 @@ awesome experience during buffer switching with exwm and browser
   :config
   (setq +snippets-dir "/home/m/Templates/snippets/"))
 #+end_src
+
