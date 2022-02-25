@@ -32,7 +32,7 @@
 (package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map" :files ("*.el")))
 ;; (package! org-anki :recipe (:host github :repo "smallstepman/org-anki" :files ("*.el")))
 (package! shackle) ;; TODO
-(package! deft)
+(package! string-inflection :recipe (:host github :repo "akicho8/string-inflection" :files ("string-inflection.el")))
 
 ;; TODO
 ;; (package! narrow-region-other-window)
