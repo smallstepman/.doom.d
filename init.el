@@ -41,7 +41,7 @@
        (window-select +switch-window)     ; visually switch windows
        workspaces          ; tab emulation, persistence & separate workspaces
        zen                 ; distraction-free coding or writing
-       ;;deft              ; notational velocity for Emacs
+       deft              ; notational velocity for Emacs
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        ;;ligatures         ; ligatures and symbols to make your code pretty again
