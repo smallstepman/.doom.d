@@ -6,6 +6,7 @@
 (package! company-tabnine)
 (package! telega) ;; TODO
 (package! graphviz-dot-mode)
+;; (package! company-graphviz-dot)
 (package! anki-editor)
 (package! git-timemachine)
 (package! org-caldav)
@@ -54,7 +55,6 @@
 ;; (package! which-key-posframe)
 ;; (package! activity-watch-mode)
 ;; (package! graphql-mode)
-;; (package! company-graphviz-dot)
 ;; (package! eaf)
 ;; (package! ctable)
 ;; (package! deferred)
