@@ -1,0 +1,10 @@
+:PROPERTIES:
+:ID:       828c642a-1acf-4fba-8324-392942c94f37
+:END:
+#+title: emacs
+
+- shift-!-! : execute shell command and print output directly in buffer
+
+* packages
+- https://github.com/rnkn/olivetti - window margins
+-
