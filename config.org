@@ -934,9 +934,13 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** rustic
 #+begin_src emacs-lisp
-(after! rustic
+(use-package! rustic
+  :config
   (setq lsp-rust-server 'rust-analyzer)
   (setq rustic-lsp-server 'rust-analyzer))
+;; (after! rustic
+;;   (setq lsp-rust-server 'rust-analyzer)
+;;   (setq rustic-lsp-server 'rust-analyzer))
 #+end_src
 ** TODO slack
 ** string-inflection

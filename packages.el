@@ -35,6 +35,7 @@
 (package! shackle) ;; TODO
 (package! string-inflection :recipe (:host github :repo "akicho8/string-inflection" :files ("string-inflection.el")))
 
+(unpin! rustic)
 ;; TODO
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
