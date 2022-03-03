@@ -962,14 +962,14 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** vulpea
 #+begin_src emacs-lisp
+(load! "agenda" "~/.doom.d/org-roam-task-management") ;; https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
 (use-package! vulpea
   ;; hook into org-roam-db-autosync-mode you wish to enable
   ;; persistence of meta values (see respective section in README to
   ;; find out what meta means)
   :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable))
-  :after org-roam
+  ;; :after org-roam
   :config
-  (load! "org-roam-task-management/agenda") ;; https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
   (add-to-list 'org-tags-exclude-from-inheritance "project"))
 #+end_src
 ** yasnippet
