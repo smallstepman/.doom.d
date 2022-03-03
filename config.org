@@ -330,6 +330,12 @@ awesome experience during buffer switching with exwm and browser
   :after org
 )
 #+end_src
+** bitwarden
+#+begin_src emacs-lisp
+(use-package! bitwarden
+  :config
+  (setq bitwarden-user "m.liebiediew@gmail.com"))
+#+end_src
 ** blamer
 #+begin_src emacs-lisp
 (use-package! blamer

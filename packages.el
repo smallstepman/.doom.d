@@ -36,6 +36,8 @@
 (package! string-inflection :recipe (:host github :repo "akicho8/string-inflection" :files ("string-inflection.el")))
 (unpin! rustic)
 (package! crdt) ;; TODO
+(package! bitwarden :recipe (:host github :repo "seanfarley/emacs-bitwarden" :files ("bitwarden.el")))
+
 ;; TODO
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
