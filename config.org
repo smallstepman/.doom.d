@@ -555,20 +555,45 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 #+end_src
 ** TODO org
-*** webbrowser bookmarks
 #+begin_src emacs-lisp
-(setq org-html-validation-link nil)  ;; removes validation link from exported html file
-(require 'org-protocol)
-(setq org-capture-templates
-        '(
-          ("o" "Link capture" entry
-           (file+headline "~/org/bookmarks.org" "INBOX")
-           "* %a %U \n%:initial"
-           :immediate-finish t)
-))
-(setq org-protocol-default-template-key "o")
+(use-package! org
+  :config
+  (require 'org-protocol)
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-habit-graph-column 60)
+  (setq org-display-inline-images t)
+  (setq org-redisplay-inline-images t)
+  (setq org-startup-with-inline-images "inlineimages")
+  (setq org-ellipsis " ▾")
+  (setq org-agenda-start-with-log-mode t)
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-html-validation-link nil)  ;; removes validation link from exported html file
+  (setq org-capture-templates '(
+    ("o" "Link capture" entry
+    (file+headline "~/org/bookmarks.org" "INBOX")
+    "* %a %U \n%:initial"
+    :immediate-finish t)))
+  (setq org-protocol-default-template-key "o")
+  (setq org-structure-template-alist '(
+    ("n" . "notes")
+    ("a" . "export ascii")
+    ("c" . "center")
+    ("C" . "comment")
+    ("e" . "example")
+    ("E" . "export")
+    ("h" . "export html")
+    ("l" . "export latex")
+    ("q" . "quote")
+    ("s" . "src")
+    ("v" . "verse")
+    ("g" . "src dot :file diagram.png :cmdline -Tpng :exports output")
+    ("u" . "src plantuml :file diagram.png :cmdline -Tpng :exports output")
+    ("r" . "src rust :tangle \"/tmp/org-babel-rust/src/main.rs\" :exports both :toolchain 'nightly :main"))))
 #+end_src
 *** TODO hide PROPERTIES drawer
+<
 #+begin_src emacs-lisp
 ;; (defun org-cycle-hide-drawers (state)
 ;;   "Re-hide all drawers after a visibility state change."
@@ -608,44 +633,6 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 *** TODO clockin
 #+begin_src emacs-lisp
-
-  ;; (setq org-capture-templates
-  ;;       `(
-  ;;         ("j" "Journaling" entry
-  ;;          (function org-roam-dailies-find-today )
-  ;;          "* %a")
-
-  ;;         ;; ("m" "Metrics Capture")
-  ;;         ;; ("mw" "Weight" table-line (file+headline "~/org/roam/metrics.org" "Weight")
-  ;;         ;;  "| %U | %^{Weight} | %^{Notes} |" :kill-buffer t)
-  ;;         ;; ("mc" "Cooking" entry (file+olp+datetree "~/org/roam/metrics.org")
-  ;;         ;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-  ;;         ;; ("ms" "Shopping" entry (file+olp+datetree "~/org/roam/metrics.org")
-  ;;         ;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-  ;;         ;; ("mt" "Cleaning" entry (file+olp+datetree "~/org/roam/metrics.org")
-  ;;         ;;  "* Checking Email :email:\n\n%?" :clock-in :clock-resume :empty-lines 1)
-
-  ;;         ("o" "Link capture" entry
-  ;;          (file+headline "~/org/roam/bookmarks.org" "INBOX")
-  ;;          "* %a %U"
-  ;;          :immediate-finish t)
-
-  ;;         ("t" "Task" entry
-  ;;          (file+olp "~/org/pims/journal/%<%Y-%m-%d>.org" "Inbox")
-  ;;          "* TODO %?\n  %U\n  %a\n  %i"
-  ;;          :empty-lines 1)
-
-  ;;         ;; ("v" "Voice")
-  ;;         ;; ("vr" "start recording" nil (file+function "~/org/roam/voice/.org" (lambda () (interactive) (call-process-shell-command "audio-recorder -c start && audio-recorder -c hide" nil 0))
-  ;;         ;;  "* new recording %U %a"           )
-  ;;         ;; ("vs" "stop recording" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c stop && audio-recorder -c quit" nil 0))))
-  ;;         ;; ("va" "show app" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c show" nil 0))))
-  ;;         ;; ("vt" "hide app" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c hide" nil 0))))
-
-  ;;         ;; ("w" "Workflow")
-  ;;         ;; ("wa" "Apps Improvement" entry (file+olp "~/org/roam/workflow.org" "Apps")
-  ;;         ;;  "* TODO %?\n  %U\n  %a\n  %i" :empty-lines 1)
-  ;;         ))
 ;; (defun in-same-heading-as-clock-p ()
 ;;   "Check if the cursor is in the same heading as the current clock.
 ;; That means:
@@ -696,22 +683,7 @@ awesome experience during buffer switching with exwm and browser
 ;; (defun date-hook-fn ()
 ;;   (goto-char (line-end-position))
 ;;   (insert (format-time-string " :%m/%d/%Y %H:%M")))
-
 ;; (add-hook! 'org-checkbox-statistics-hook 'date-hook-fn)
-
-;; (use-package! org
-;;   ;; :hook (org-mode . efs/org-font-setup)
-;;   :config
-;;   (require 'org-habit)
-;;   (add-to-list 'org-modules 'org-habit)
-;;   (setq org-habit-graph-column 60)
-;;   (setq org-display-inline-images t)
-;;   (setq org-redisplay-inline-images t)
-;;   (setq org-startup-with-inline-images "inlineimages")
-;;   (setq org-ellipsis " ▾")
-;;   (setq org-agenda-start-with-log-mode t)
-;;   (setq org-log-done 'time)
-;;   (setq org-log-into-drawer t)
 
 ;;(after! org (plist-put org-format-latex-options :scale 1.75)
 ;; (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
@@ -723,11 +695,9 @@ awesome experience during buffer switching with exwm and browser
 ;;   (setq org-refile-targets
 ;;         '(("/home/marcin/org/roam/archive.org" :maxlevel . 1)
 ;;           ("/home/marcin/org/roam/tasks.org" :maxlevel . 1)))
-
 ;;   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 ;;   (setq org-tag-alist
 ;;         '((:startgroup)
-;;                                         ; Put mutually exclusive tags here
 ;;           (:endgroup)
 ;;           ("@home" . ?H)
 ;;           ("@work" . ?W)
@@ -787,14 +757,6 @@ awesome experience during buffer switching with exwm and browser
 ;;             (todo "CANC"
 ;;                   ((org-agenda-overriding-header "Cancelled Projects")
 ;;                    (org-agenda-files org-agenda-files)))))))
-
-;;   (efs/org-font-setup))
-
-
-
-#+end_src
-#+begin_src emacs-lisp
-
 #+end_src
 ** org-anki
 #+begin_src emacs-lisp
@@ -882,6 +844,15 @@ awesome experience during buffer switching with exwm and browser
   ;;            #'org-roam-reflinks-insert-section
   ;;            #'org-roam-unlinked-references-insert-section))
 
+  ;;         ;; ("v" "Voice")
+  ;;         ;; ("vr" "start recording" nil (file+function "~/org/roam/voice/.org" (lambda () (interactive) (call-process-shell-command "audio-recorder -c start && audio-recorder -c hide" nil 0))
+  ;;         ;;  "* new recording %U %a"           )
+  ;;         ;; ("vs" "stop recording" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c stop && audio-recorder -c quit" nil 0))))
+  ;;         ;; ("va" "show app" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c show" nil 0))))
+  ;;         ;; ("vt" "hide app" nil (function (lambda () (interactive) (call-process-shell-command "audio-recorder -c hide" nil 0))))
+
+  ;;         ;; ("w" "Workflow")
+  ;;         ;; ("wa" "Apps Improvement" entry (file+olp "~/org/roam/workflow.org" "Apps")
   (org-roam-db-autosync-mode)
 )
 
