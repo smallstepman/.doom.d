@@ -760,10 +760,10 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** org-anki
 #+begin_src emacs-lisp
-(use-package! org-anki
-  :load-path "/home/m/Desktop/emacs/org-anki/org-anki.el"
-  :config
-  (setq org-anki-default-deck "computer-science"))
+;; (use-package! org-anki
+;;   :load-path "/home/m/Desktop/emacs/org-anki/org-anki.el"
+;;   :config
+;;   (setq org-anki-default-deck "computer-science"))
 #+end_src
 ** org-caldav
 #+begin_src emacs-lisp
@@ -978,4 +978,10 @@ awesome experience during buffer switching with exwm and browser
   :config
   (setq +snippets-dir "/home/m/Templates/snippets/"))
 #+end_src
-
+** webkit
+#+begin_src emacs-lisp
+(use-package! webkit
+:config
+(use-package 'webkit-ace) ;; If you want link hinting
+(use-package 'webkit-dark))
+#+end_src
