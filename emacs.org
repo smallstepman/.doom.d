@@ -5,6 +5,22 @@
 
 - shift-!-! : execute shell command and print output directly in buffer
 
+* ideas
+** search docs.rs via completion framework
+similar to [[https://www.reddit.com/r/emacs/comments/syih7g/fuzzy_searching_apples_online_docs_w_ivy/][this]]
+*** option 1
+#+begin_src shell
+RUSTDOCFLAGS="--output-format json -Zunstable-options" cargo doc --all
+#+end_src
+*** option 2
+https://github.com/roogle-rs/roogle
+*** option 3
+puppeteer
+*** option 4
+[[https://lsif.dev/][LSIF.dev]] [2022-03-05 sob 23:20]
+#+begin_src shell
+rust-analyzer lsif src/ > dump.lsif
+#+end_src
 * packages
 - https://github.com/rnkn/olivetti - window margins
 -
