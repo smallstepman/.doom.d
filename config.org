@@ -430,6 +430,16 @@ awesome experience during buffer switching with exwm and browser
       deft-extensions '("txt" "org")
       deft-recursive t))
 #+end_src
+** dirvish
+#+begin_src emacs-lisp
+(use-package! dirvish
+  :config
+  (setq dired-kill-when-opening-new-dired-buffer t) ; added in emacs 28
+  (setq dired-clean-confirm-killing-deleted-buffers nil)
+  (setq delete-by-moving-to-trash t)
+  (setq dired-listing-switches "-AGhlv --group-directories-first --time-style=long-iso")
+  (remove-hook 'doom-switch-buffer-hook #'doom-auto-revert-buffer-h))
+#+end_src
 ** TODO discord
 *** [[https://www.aliquote.org/post/discord-bitlbee/][Discord on Emacs - aliquote]] [2021-12-28 wto 18:39]
 ** elfeed-org
