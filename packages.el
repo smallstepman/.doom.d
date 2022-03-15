@@ -41,6 +41,8 @@
 (package! org-roam-timestamps)
 (package! org-roam-bibtex)
 (package! dirvish :recipe (:host github :repo "alexluigit/dirvish" :files ("*.el")))
+(package! org-tree-slide)
+(package! osm)
 
 ;; TODO
 ;; (package! narrow-region-other-window)
