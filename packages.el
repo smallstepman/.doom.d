@@ -37,7 +37,7 @@
 (unpin! rustic)
 (package! crdt) ;; TODO
 (package! bitwarden :recipe (:host github :repo "seanfarley/emacs-bitwarden" :files ("bitwarden.el")))
-(package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
+;; (package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
 (package! org-roam-timestamps)
 (package! org-roam-bibtex)
 (package! dirvish :recipe (:host github :repo "alexluigit/dirvish" :files ("*.el")))

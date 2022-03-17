@@ -1026,8 +1026,15 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** webkit
 #+begin_src emacs-lisp
+<<<<<<< HEAD
 (use-package! webkit)
 ;; :config
 (use-package! webkit-ace) ;; If you want link hinting
 (use-package! webkit-dark)
+=======
+;; (use-package! webkit
+;; :config
+;; (use-package 'webkit-ace) ;; If you want link hinting
+;; (use-package 'webkit-dark))
+>>>>>>> 01a179b (drop: webkit)
 #+end_src
