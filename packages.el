@@ -34,7 +34,7 @@
 ;; (package! org-anki :recipe (:host github :repo "smallstepman/org-anki" :files ("*.el")))
 (package! shackle) ;; TODO
 (package! string-inflection :recipe (:host github :repo "akicho8/string-inflection" :files ("string-inflection.el")))
-(unpin! rustic)
+;;(unpin! rustic)
 (package! crdt) ;; TODO
 (package! bitwarden :recipe (:host github :repo "seanfarley/emacs-bitwarden" :files ("bitwarden.el")))
 ;; (package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
