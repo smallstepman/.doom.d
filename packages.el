@@ -44,6 +44,7 @@
 (package! org-tree-slide)
 (package! osm)
 
+(package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
 ;; TODO
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
