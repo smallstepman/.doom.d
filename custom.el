@@ -3,6 +3,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(elcord-editor-icon "emacs_material_icon")
+ '(lsp-rust-analyzer-cargo-unset-test ["sqlx"])
  '(org-structure-template-alist
    '(("n" . "notes")
      ("a" . "export ascii")
@@ -16,7 +18,7 @@
      ("s" . "src")
      ("v" . "verse")
      ("r" . "src rust :tangle \"/tmp/org-babel-rust/src/main.rs\" :exports both :toolchain 'nightly :main")))
- '(package-selected-packages '(org-anki))
+ '(package-selected-packages '(counsel w3m org-anki))
  '(safe-local-variable-values
    '((eval add-hook 'after-save-hook
            (lambda nil

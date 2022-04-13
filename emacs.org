@@ -21,6 +21,8 @@ puppeteer
 #+begin_src shell
 rust-analyzer lsif src/ > dump.lsif
 #+end_src
+*** option 5
+dash
 * packages
 - https://github.com/rnkn/olivetti - window margins
 -
