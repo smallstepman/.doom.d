@@ -94,7 +94,8 @@
 (defun my/wm-terminal ()
   (+evil-window-vsplit-a)
   (evil-window-right 1)
-  (+vterm/here t))
+  (+vterm/here t)
+  (evil-insert 0))
 #+end_src
 *** window kill
 #+begin_src emacs-lisp
