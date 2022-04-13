@@ -47,6 +47,7 @@
 (package! powerthesaurus) ;; TODO https://github.com/SavchenkoValeriy/emacs-powerthesaurus
 (package! dired-dragon :recipe (:host github :repo "jeetelongname/dired-dragon"))
 ;; (package! tab-bar-echo-area)
+(package! burly)
 (package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
 ;; TODO
 ;; (package! narrow-region-other-window)
