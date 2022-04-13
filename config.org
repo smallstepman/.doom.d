@@ -459,6 +459,11 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** TODO discord
 *** [[https://www.aliquote.org/post/discord-bitlbee/][Discord on Emacs - aliquote]] [2021-12-28 wto 18:39]
+** dragon
+#+begin_src emacs-lisp
+;; (use-package! dired-dragon
+;;   :after dired)
+#+end_src
 ** elfeed-org
 #+begin_src emacs-lisp
 (use-package! elfeed
