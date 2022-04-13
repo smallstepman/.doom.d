@@ -94,6 +94,7 @@
        ;;pass              ; password manager for nerds
        ;;prodigy           ; FIXME managing external services & code builders
        ;;taskrunner        ; taskrunner for all your projects
+       terraform        ; taskrunner for all your projects
 
        :os
 
