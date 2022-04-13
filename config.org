@@ -364,6 +364,11 @@ awesome experience during buffer switching with exwm and browser
   ;; (global-blamer-mode 1))
   )
 #+end_src
+** burly
+#+begin_src emacs-lisp
+(use-package! burly
+  )
+#+end_src
 ** calibredb
 #+begin_src emacs-lisp
 (use-package! calibredb
