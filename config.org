@@ -464,6 +464,22 @@ awesome experience during buffer switching with exwm and browser
 ;; (use-package! dired-dragon
 ;;   :after dired)
 #+end_src
+** elcord
+#+begin_src emacs-lisp
+(use-package! elcord
+  :config
+
+  (defun elcord-buffer-details-format ()
+    "Return the buffer details string shown on discord."
+    (cond
+     ((string-prefix-p "/home/m/Desktop" (buffer-file-name))
+        (format "Editing: %s - %s" (projectile-project-name) (replace-regexp-in-string (projectile-project-root) "" (buffer-file-name))))
+     ((string-prefix-p "/home/m/.doom.d" (buffer-file-name)) "Tweaking Emacs config")
+     (t "Editing some file")))
+
+
+  (elcord-mode))
+#+end_src
 ** elfeed-org
 #+begin_src emacs-lisp
 (use-package! elfeed
