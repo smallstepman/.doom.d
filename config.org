@@ -1025,6 +1025,13 @@ awesome experience during buffer switching with exwm and browser
 ;;   (vertico-posframe-mode 1)
 ;; )
 #+end_src
+** KILL tab-bar-echo-area
+cool idea, but requires a lot of work: integrate perspectives, workspaces and system tray into echo area
+#+begin_src emacs-lisp
+;; (use-package! tab-bar-echo-area
+;;   :config
+;;   (tab-bar-echo-area-mode 1))
+#+end_src
 ** TODO treemacs
 #+begin_src emacs-lisp
 (use-package! treemacs
