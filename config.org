@@ -973,6 +973,10 @@ awesome experience during buffer switching with exwm and browser
 #+begin_src emacs-lisp
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
 #+end_src
+** powerthesaurus
+#+begin_src emacs-lisp
+(use-package! powerthesaurus)
+#+end_src
 ** projectile
 #+begin_src emacs-lisp
 (setq projectile-project-search-path '("~/Desktop/"))
