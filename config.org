@@ -908,7 +908,68 @@ awesome experience during buffer switching with exwm and browser
 
 #+RESULTS:
 : t
+** org-roam-bibtex
+#+begin_src emacs-lisp
+;; (defun jethro/tag-new-node-as-draft ()
+;;   (org-roam-tag-add '("draft"))) ;; mark completed notes manually as "complete"
 
+;; (add-hook 'org-roam-capture-new-node-hook #'jethro/tag-new-node-as-draft)
+
+(defun jethro/org-roam-node-from-cite (keys-entries)
+  (interactive (list (citar-select-ref :multiple nil :rebuild-cache t)))
+  (let ((title (citar--format-entry-no-widths (cdr keys-entries)
+                                              "${author editor} :: ${title}")))
+    (org-roam-capture- :templates '(("r" "reference" plain "%?"
+                                     :if-new (file+head "refs/${citekey}.org"
+                                                        ":PROPERTIES:\n:ROAM_REFS: [cite:@${citekey}]\n:END:\n#+title: ${title}\n#+created: %U\n#+last_modified: %U\n#+filetags: %^g\n#+startup: overview\n#+visibility: folded\n")
+                                     :immediate-finish t
+                                     :unnarrowed t))
+                       :info (list :citekey (car keys-entries))
+                       :node (org-roam-node-create :title title)
+                       :props '(:finalize find-file))))
+(setq ola/default-bibliography `(,(expand-file-name "~/org/papers.bib" org-directory) ,(expand-file-name "~/org/web.bib" org-directory)))
+
+(after! bibtex-completion
+  (setq! bibtex-completion-notes-path org-roam-directory
+         bibtex-completion-bibliography ola/default-bibliography
+         org-cite-global-bibliography ola/default-bibliography
+         bibtex-completion-pdf-field "file"))
+
+(after! bibtex-completion
+  (after! org-roam
+    (setq! bibtex-completion-notes-path org-roam-directory)))
+
+(after! citar
+  (map! :map org-mode-map
+        :desc "Insert citation" "C-c b" #'citar-insert-citation)
+  (setq citar-bibliography ola/default-bibliography
+        citar-at-point-function 'embark-act
+        citar-notes-paths `("~/org/roam/refs")
+        citar-symbol-separator "  "
+        citar-format-reference-function 'citar-citeproc-format-reference
+        org-cite-csl-styles-dir "~/Zotero/styles"
+        citar-citeproc-csl-styles-dir org-cite-csl-styles-dir
+        citar-citeproc-csl-locales-dir "~/Zotero/locales"
+        citar-citeproc-csl-style (file-name-concat org-cite-csl-styles-dir "apa.csl")))
+
+(map! :leader
+      :desc "cite"
+      "C" #'jethro/org-roam-node-from-cite)
+
+(use-package! org-roam-bibtex
+  :config
+  (require 'citar))
+#+end_src
+** org-roam-timestamps
+#+begin_src emacs-lisp
+(use-package! org-roam-timestamps
+  :after org-roam
+  :config
+  (org-roam-timestamps-mode)
+  (setq org-roam-timestamps-parent-file t)
+  (setq org-roam-timestamps-remember-timestamps t)
+  (setq org-roam-timestamps-minimum-gap 36000))
+#+end_src
 ** org-roam-ui
 #+begin_src emacs-lisp
 (use-package! websocket
