@@ -7,14 +7,24 @@
 #+end_src
 * looks
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 28 :weight 'semi-light)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
       doom-theme 'doom-molokai
-      doom-variable-pitch-font (font-spec :family "sans" :size 28))
-(setq display-line-numbers-type nil)
-(setq fancy-splash-image "~/Pictures/8bitwinter2.png")
+      doom-variable-pitch-font (font-spec :family "sans" :size 18)
+      display-line-numbers-type nil
+      fancy-splash-image "~/Pictures/8bitwinter2.png")
 #+end_src
 ** TODO [[https://www.reddit.com/r/emacs/comments/shzif1/n%CE%BBno_font_stack/][NΛNO font stack : emacs]] [2022-02-04 pią 18:18]
-
+** TODO popup
+#+begin_src emacs-lisp
+;; (when (featurep! :ui popup;; )
+  ;; (plist-put! +popup-defaults :height 0.3)
+  ;; (after! eww
+  ;;   (set-popup-rule! "^\\*eww bookmarks\\*" :size 0.3 :side 'bottom :quit t :select t)
+  ;;   (set-popup-rule! "^\\*eww" :ignore t))
+  ;; (set-popup-rule! "^\\*Occur\\*$" :ignore nil :side 'bottom :quit t :select t)
+  ;; (set-popup-rule! "^\\*info\\*$" :ignore t))
+#+end_src
+** TODO shackle
 ** TODO vertico-posframe
 #+begin_src emacs-lisp
 (use-package! vertico-posframe
