@@ -27,14 +27,14 @@
 ** TODO shackle
 ** TODO vertico-posframe
 #+begin_src emacs-lisp
-(use-package! vertico-posframe
-  :hook (vertico-mode . vertico-posframe-mode)
-  :config
-  (add-hook 'doom-after-reload-hook #'posframe-delete-all)
-  (vertico-posframe-mode 1)
-  (setq vertico-posframe-parameters
-      '((left-fringe . 8)
-        (right-fringe . 8))))
+;; (use-package! vertico-posframe
+;;   :hook (vertico-mode . vertico-posframe-mode)
+;;   :config
+;;   (add-hook 'doom-after-reload-hook #'posframe-delete-all)
+;;   (vertico-posframe-mode 1)
+;;   (setq vertico-posframe-parameters
+;;       '((left-fringe . 8)
+;;         (right-fringe . 8))))
 #+end_src
 * keymap
 #+begin_src emacs-lisp
@@ -1154,16 +1154,6 @@ awesome experience during buffer switching with exwm and browser
     ;; Number the candidates (use M-1, M-2 etc to select completions).
     (setq company-show-numbers t))
 
-#+end_src
-** TODO vertico-posframe
-#+begin_src emacs-lisp
-;; (use-package! vertico-posframe
-;;   :config
-;;   (setq vertico-posframe-parameters
-;;       '((left-fringe . 8)
-;;         (right-fringe . 8)))
-;;   (vertico-posframe-mode 1)
-;; )
 #+end_src
 ** KILL tab-bar-echo-area
 cool idea, but requires a lot of work: integrate perspectives, workspaces and system tray into echo area
