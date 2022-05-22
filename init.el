@@ -97,6 +97,8 @@
        terraform        ; taskrunner for all your projects
 
        :os
+       macos
+       ;;tty
 
        :lang
        beancount
