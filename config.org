@@ -47,42 +47,90 @@
 (setq-default evil-escape-delay 0.2)
 (setq evil-snipe-scope 'buffer)
 
-(map! :g "<M-XF86Launch6>" #'+workspace/delete)
-(map! :g "<M-XF86Launch5>" #'+workspace:switch-previous)
-(map! :g "<M-XF86Tools>" #'+workspace:switch-next)
+(map! :g "C-M-s-`"          #'+workspace/switch-to-0
+         "C-M-s-1"          #'+workspace/switch-to-1
+         "C-M-s-2"          #'+workspace/switch-to-2
+         "C-M-s-3"          #'+workspace/switch-to-3
+         "C-M-s-4"          #'+workspace/switch-to-4
+         "C-M-s-5"          #'+workspace/switch-to-5
+         "C-M-s-6"          #'+workspace/switch-to-6
+         "C-M-s-7"          #'+workspace/switch-to-7
+         "C-M-s-8"          #'+workspace/switch-to-8
+         "C-M-s-9"          #'+workspace/switch-to-9
+         "C-M-s-0"          #'+workspace/switch-to
+         "C-M-s--"          #'+workspace:switch-previous
+         "C-M-s-="          #'+workspace:switch-next
+         "C-M-s-<escape>"   #'+workspace/delete
 
-(map! :g "<M-XF86TouchpadOn>" #'+workspace/close-window-or-workspace)
-(map! :g "<M-XF86TouchpadToggle>" #'kill-current-buffer)
-(map! :g "<M-XF86Launch7>" #'next-buffer)
-(map! :g "<M-XF86Launch8>" #'previous-buffer)
-(map! :g "<M-XF86Launch9>" #'+vertico/switch-workspace-buffer)
+         "s-n"              #'yabai-window-left
+         "s-e"              #'yabai-window-down
+         "s-i"              #'yabai-window-up
+         "s-o"              #'yabai-window-right
+         "C-s-<left>"       (λ! (evil-window-increase-width 3))
+         "C-s-<right>"      (λ! (evil-window-decrease-width 3))
+         "C-s-<up>"         (λ! (evil-window-increase-height 3))
+         "C-s-<down>"       (λ! (evil-window-decrease-height 3))
+         "C-M-s-<left>"     #'+evil/window-move-left
+         "C-M-s-<right>"    #'+evil/window-move-right
+         "C-M-s-<up>"       #'+evil/window-move-up
+         "C-M-s-<down>"     #'+evil/window-move-down
 
-(map! :g "<XF86Launch5>"  #'+vterm/toggle)
-(map! :g "<XF86Tools>"  #'+treemacs/toggle)
+         "C-M-s-q"          #'+workspace/close-window-or-workspace
+         "C-M-s-w"          #'switch-window
+         "C-M-s-t"          #'save-buffer  ;; f
+         "C-M-s-d"          #'magit-status ;; g
+         "C-M-s-z"          #'+multiple-cursors/evil-mc-toggle-cursor-here
+         "C-M-s-v"          #'lsp-extend-selection
+         "C-M-s-b"          #'+vertico/switch-workspace-buffer
+         "C-M-s-e"          #'kill-current-buffer ;; k
+         "M-s-RET"          #'doom/window-maximize-buffer
+         "C-M-s-,"          #'previous-buffer
+         "C-M-s-."          #'next-buffer
+         "C-M-s-<f1>"       #'+treemacs/toggle
+         "C-M-s-<f2>"       #'+vterm/toggle
+         "C-M-s-<f3>"       #'avy-goto-char-timer
+         "C-M-s-<f4>"       #'lsp-ui-imenu
+         "C-M-s-<f5>"       #'vc-msg-show
+         "C-s-n"            #'winner-undo
+         "C-s-e"            #'winner-redo
 
-(map! :g "<M-XF86AudioMicMute>" #'+multiple-cursors/evil-mc-toggle-cursor-here)
-(map! :g "<XF86TouchpadToggle>" #'avy-goto-char-timer)
-;; (map! :g "<XF86TouchpadToggle>" #'avy-goto-word-0)
-;; (map! :g "<M-XF86TouchpadOn>" #'avy-goto-line)
+         "C-M-<f7>"         #'+default/diagnostics
+         "C-M-<f8>"         #'+lookup/definition
+         "C-M-<f9>"         #'+lookup/references
+         "C-M-<f10>"        #'+lookup/implementations
+         "C-M-<f11>"        #'lsp-ui-doc-show
+         "C-M-<f12>"        #'lsp-execute-code-action
+         ;; "C-M-s-<f8>"       #'lsp-ui-peek-find-definitions
+         ;; "C-M-s-<f9>"       #'lsp-ui-peek-find-references
+         ;; "C-M-s-<f10>"      #'lsp-ui-peek-find-implementation
+         ;; "C-M-<f11>"        #'lsp-find-declaration
+         ;; "C-M-s-<f12>"      #'lsp-find-type-definition
+         ;; "C-M-<f12>"        #'+lookup/type-definition
+         ;; "C-M-s-<f7>"       #'lsp-execute-code-action
+         ;; "C-M-s-<f6>"       #'lsp-ui-doc-hide
+         ;; "C-M-s-<f6>"       #'lsp-ui-doc-unfocus-frame
+         ;; "C-M-s-<f5>"       #'lsp-ui-doc-focus-frame
 
-(map! :g "C-M-<XF86Launch7>"  #'switch-window) ;; maybe +hydra/window-nav/body ?
-(map! :g "C-M-<XF86Tools>"  #'save-buffer)
-(map! :g "C-M-<XF86Launch5>"  #'+hydra/code-nav/body)
-(map! :g "C-M-<XF86Launch6>"  #'magit-status)
-;; (map! :gi "s-t" #'lsp-describe-thing-at-point)
-;; (map! :g "s-d" #'lsp-goto-type-definition)
+         "C-M-s-<tab>"      #'burly-bookmark-frames
+         ;; "C-M-s-<f19>"      #'burly-bookmark-windows
+         ;; "C-M-s-<f19>"      #'burly-open-last-bookmark
+         "C-M-s-<f13>"      #'scroll-other-window
+         "C-M-s-<f14>"      #'scroll-other-window-down
+         "C-M-s-<f15>"      #'goto-last-change
+         ;; "C-M-s-<f16>"      #'goto-last-change-reversed
+         )
 
-(map! :g "<f7>" #'scroll-other-window-down)
-(map! :g "<f8>" #'scroll-other-window)
-(map! :g "<f2>" #'goto-last-change-reversed)
-(map! :g "<f1>" #'goto-last-change)
-
-;; (map! :g "<s-f8>" #'swiper)
+(map! :map vterm-mode-map
+      :niv "M-n" #'evil-window-left
+           "M-e" #'evil-window-down
+           "M-i" #'evil-window-up
+           "M-o" #'evil-window-right)
 
 (map! :leader
       :desc "ranger"
       "o o" #'ranger)
 #+end_src
+
 ** avy
 #+begin_src emacs-lisp
 (setq avy-all-windows t)
@@ -110,12 +158,40 @@
   (+evil-window-vsplit-a)
   (evil-window-right 1)
   (+vterm/here t)
+  (doom/window-maximize-buffer)
+  (raise-frame)
   (evil-insert 0))
 #+end_src
 *** window kill
 #+begin_src emacs-lisp
 (defun my/wm-wind-kill ()
   (kill-current-buffer))
+#+end_src
+** yabai
+https://gist.github.com/ethan-leba/760054f36a2f7c144c6b06ab6458fae6
+#+begin_src emacs-lisp
+(defun yabai-move-on-error (direction move-fn)
+  (interactive)
+  (condition-case nil
+      (funcall move-fn)
+    (user-error (start-process "yabai" nil "yabai" "-m" "window" "--focus" direction))))
+
+
+(defun yabai-window-left ()
+  (interactive)
+  (yabai-move-on-error "west" #'windmove-left))
+
+(defun yabai-window-right ()
+  (interactive)
+  (yabai-move-on-error "east" #'windmove-right))
+
+(defun yabai-window-up ()
+  (interactive)
+  (yabai-move-on-error "north" #'windmove-up))
+
+(defun yabai-window-down ()
+  (interactive)
+  (yabai-move-on-error "south" #'windmove-down))
 #+end_src
 ** hydra
 *** code navigation
@@ -493,7 +569,8 @@ awesome experience during buffer switching with exwm and browser
      (t "Editing some file")))
 
 
-  (elcord-mode))
+  ;; (elcord-mode)
+  )
 #+end_src
 ** elfeed-org
 #+begin_src emacs-lisp
@@ -506,8 +583,8 @@ awesome experience during buffer switching with exwm and browser
 (use-package! kbd-mode
   :after org)
 #+end_src
-** dap-mode
-#+begin_src emacs-lisp
+** TODO dap-mode
+#+begin_src emacs-lispa
 (use-package! dap-mode
   :config
   (dap-ui-mode)
@@ -561,14 +638,13 @@ awesome experience during buffer switching with exwm and browser
 - https://www.reddit.com/r/emacs/comments/i7q3ne/lspuidoc_documentation_with_company/
 - https://emacs.stackexchange.com/questions/19418/get-a-reference-for-the-current-frame
 #+begin_src emacs-lisp
-(use-package! lsp-ui
-  :config
-  (setq lsp-ui-sideline-enable t)
-  (setq lsp-ui-doc-enable t)
-  (setq lsp-ui-sideline-show-hover t)
-  (setq lsp-ui-sideline-show-hover t)
-  (setq lsp-ui-doc-position 'at-point)
-)
+;; (use-package! lsp-ui
+;;   :config
+;;   (setq lsp-ui-sideline-enable t)
+;;   (setq lsp-ui-doc-enable t)
+;;   (setq lsp-ui-sideline-show-hover t)
+  ;; (setq lsp-ui-doc-position 'at-point)
+;; )
 ;;(tooltip-mode)
 #+end_src
 ** jupyter
@@ -908,6 +984,14 @@ awesome experience during buffer switching with exwm and browser
     ;; (after! org (plist-put org-format-latex-options :scale 1.3))
 )
 #+end_src
+** org-jira
+#+begin_src emacs-lisp
+(use-package! org-jira
+  :config
+  (setq jiralib-url "https://dfinity.atlassian.net"
+        org-jira-working-dir "~/org/jira"
+        org-jira-download-dir "~/org/jira/attachments"))
+#+end_src
 ** org-mind-map
 #+begin_src emacs-lisp
 (use-package! org-mind-map
@@ -1028,15 +1112,15 @@ awesome experience during buffer switching with exwm and browser
   :config
   (require 'citar))
 #+end_src
-** org-roam-timestamps
+** TODO org-roam-timestamps
 #+begin_src emacs-lisp
-(use-package! org-roam-timestamps
-  :after org-roam
-  :config
-  (org-roam-timestamps-mode)
-  (setq org-roam-timestamps-parent-file t)
-  (setq org-roam-timestamps-remember-timestamps t)
-  (setq org-roam-timestamps-minimum-gap 36000))
+;; (use-package! org-roam-timestamps
+;;   :after org-roam
+;;   :config
+;;   (org-roam-timestamps-mode)
+;;   (setq org-roam-timestamps-parent-file t)
+;;   (setq org-roam-timestamps-remember-timestamps t)
+;;   (setq org-roam-timestamps-minimum-gap 36000))
 #+end_src
 ** org-roam-ui
 #+begin_src emacs-lisp
@@ -1075,14 +1159,14 @@ awesome experience during buffer switching with exwm and browser
 #+end_src
 ** TODO org-transclusion
 #+begin_src emacs-lisp
-(use-package! org-transclusion
-  :after org
-  :init
-  (map!
-   :map global-map "<f12>" #'org-transclusion-add
-   :leader
-   :prefix "n"
-   :desc "org transclusion mode" "t" #'org-transclusion-mode))
+;; (use-package! org-transclusion
+;;   :after org
+;;   :init
+;;   (map!
+;;    :map global-map "<f12>" #'org-transclusion-add
+;;    :leader
+;;    :prefix "n"
+;;    :desc "org transclusion mode" "t" #'org-transclusion-mode))
 #+end_src
 ** osm (maps)
 #+begin_src emacs-lisp
@@ -1160,16 +1244,6 @@ awesome experience during buffer switching with exwm and browser
     (setq company-show-numbers t))
 
 #+end_src
-** TODO vertico-posframe
-#+begin_src emacs-lisp
-;; (use-package! vertico-posframe
-;;   :config
-;;   (setq vertico-posframe-parameters
-;;       '((left-fringe . 8)
-;;         (right-fringe . 8)))
-;;   (vertico-posframe-mode 1)
-;; )
-#+end_src
 ** KILL tab-bar-echo-area
 cool idea, but requires a lot of work: integrate perspectives, workspaces and system tray into echo area
 #+begin_src emacs-lisp
@@ -1182,7 +1256,10 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
 (use-package! treemacs
   :config
   (setq treemacs-display-in-side-window nil))
-
+#+end_src
+** vc-msg
+#+begin_src emacs-lisp
+(use-package! vc-msg)
 #+end_src
 ** vulpea
 #+begin_src emacs-lisp
@@ -1208,4 +1285,20 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
 ;; :config
 ;; (use-package 'webkit-ace) ;; If you want link hinting
 ;; (use-package 'webkit-dark))
+#+end_src
+
+** xwidgets & xwwp
+#+begin_src emacs-lisp
+(use-package! xwwp-full
+  :config
+  (setq xwidget-webkit-enable-plugins t)
+  ;; (xwwp-follow-link-completion-backend 'ido)
+  (map! :map xwidget-webkit-mode-map :n "f" #'xwwp-ace-toggle
+                                     :n "e" #'xwidget-webkit-scroll-up
+                                     :n "<up>" #'xwidget-webkit-scroll-up
+                                     :n "i" #'xwidget-webkit-scroll-down
+                                     :n "<down>" #'xwidget-webkit-scroll-down
+                                     :in "<escape>" #'xwidget-webkit-end-edit-textarea)
+  (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
+)
 #+end_src
