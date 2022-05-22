@@ -4,6 +4,8 @@
 #+begin_src emacs-lisp
 ;; (general-auto-unbind-keys :off)
 ;; (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+;; save bookmarks everytime
+(setq bookmark-save-flag 1)
 #+end_src
 * looks
 #+begin_src emacs-lisp
