@@ -2,8 +2,8 @@
 #+VISIBILITY: folded
 * fixes
 #+begin_src emacs-lisp
-(general-auto-unbind-keys :off)
-(remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
+;; (general-auto-unbind-keys :off)
+;; (remove-hook 'doom-after-init-modules-hook #'general-auto-unbind-keys)
 #+end_src
 * looks
 #+begin_src emacs-lisp
