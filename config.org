@@ -9,11 +9,14 @@
 #+end_src
 * looks
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
-      doom-theme 'doom-molokai
-      doom-variable-pitch-font (font-spec :family "sans" :size 18)
-      display-line-numbers-type nil
-      fancy-splash-image "~/Pictures/8bitwinter2.png")
+(setq
+      ;; doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
+     ;; doom-theme 'doom-molokai-spectrum
+     doom-theme 'doom-shades-of-purple
+    ;;  doom-variable-pitch-font (font-spec :family "sans" :size 18)
+      ;;display-line-numbers-type nil
+      fancy-splash-image "~/Pictures/dfinity-023.png"
+     )
 #+end_src
 ** TODO [[https://www.reddit.com/r/emacs/comments/shzif1/n%CE%BBno_font_stack/][NΛNO font stack : emacs]] [2022-02-04 pią 18:18]
 ** TODO popup
