@@ -38,6 +38,7 @@
 (package! crdt) ;; TODO
 (package! bitwarden :recipe (:host github :repo "seanfarley/emacs-bitwarden" :files ("bitwarden.el")))
 ;; (package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
+(package! xwwp :recipe (:host github :repo "BlueFlo0d/xwwp" :files ("*.el" "*.js" "*.css" "*" )))
 (package! org-roam-timestamps)
 (package! org-roam-bibtex)
 (package! dirvish :recipe (:host github :repo "alexluigit/dirvish" :files ("*.el")))
@@ -47,9 +48,14 @@
 (package! dired-dragon :recipe (:host github :repo "jeetelongname/dired-dragon"))
 ;; (package! tab-bar-echo-area)
 (package! burly)
-(package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
+;; (package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
 (package! elcord)
-;; TODO
+(package! org-jira)
+(unpin! lsp-mode)
+(package! lsp-mode :pin "11c0c7af611ecb63f7797caae66fb03ba10c8c1e")
+(package! hass) ;; TODO home-assistant integration
+(package! vc-msg)
+
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
 ;; (package! exwm)
@@ -70,7 +76,7 @@
 ;; (package! activity-watch-mode)
 ;; (package! graphql-mode)
 ;; (package! eaf)
-;; (package! ctable)
+(package! ctable)
 ;; (package! deferred)
 ;; (package! epc)
 
