@@ -3,6 +3,7 @@
 (package! toc-org)
 (package! vertico-posframe) ;; TODO
 (package! blamer)
+(package! zoxide)
 (package! company-tabnine)
 (package! telega) ;; TODO
 (package! graphviz-dot-mode)
@@ -55,6 +56,7 @@
 (package! lsp-mode :pin "11c0c7af611ecb63f7797caae66fb03ba10c8c1e")
 (package! hass) ;; TODO home-assistant integration
 (package! vc-msg)
+(package! popper)
 
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
@@ -73,7 +75,7 @@
 ;; (package! counsel-spotify)
 ;; (package! spotify)
 ;; (package! which-key-posframe)
-;; (package! activity-watch-mode)
+(package! activity-watch-mode)
 ;; (package! graphql-mode)
 ;; (package! eaf)
 (package! ctable)

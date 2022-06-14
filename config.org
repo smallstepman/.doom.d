@@ -12,11 +12,13 @@
 (setq
       ;; doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
      ;; doom-theme 'doom-molokai-spectrum
-     doom-theme 'doom-shades-of-purple
+     doom-theme 'doom-outrun-electric
     ;;  doom-variable-pitch-font (font-spec :family "sans" :size 18)
       ;;display-line-numbers-type nil
       fancy-splash-image "~/Pictures/dfinity-023.png"
      )
+;; (setq default-frame-alist '((undecorated . t)))
+(set-frame-parameter (selected-frame) 'alpha '(97 . 93))
 #+end_src
 ** TODO [[https://www.reddit.com/r/emacs/comments/shzif1/n%CE%BBno_font_stack/][NΛNO font stack : emacs]] [2022-02-04 pią 18:18]
 ** TODO popup
@@ -47,17 +49,19 @@
 (setq-default evil-escape-delay 0.2)
 (setq evil-snipe-scope 'buffer)
 
-(map! :g "C-M-s-`"          #'+workspace/switch-to-0
-         "C-M-s-1"          #'+workspace/switch-to-1
-         "C-M-s-2"          #'+workspace/switch-to-2
-         "C-M-s-3"          #'+workspace/switch-to-3
-         "C-M-s-4"          #'+workspace/switch-to-4
-         "C-M-s-5"          #'+workspace/switch-to-5
-         "C-M-s-6"          #'+workspace/switch-to-6
-         "C-M-s-7"          #'+workspace/switch-to-7
-         "C-M-s-8"          #'+workspace/switch-to-8
-         "C-M-s-9"          #'+workspace/switch-to-9
-         "C-M-s-0"          #'+workspace/switch-to
+(defvar toggle-window-maximization t)
+
+(map! :g "C-M-s-1"          #'+workspace/switch-to-0
+         "C-M-s-2"          #'+workspace/switch-to-1
+         "C-M-s-3"          #'+workspace/switch-to-2
+         "C-M-s-4"          #'+workspace/switch-to-3
+         "C-M-s-5"          #'+workspace/switch-to-4
+         "C-M-s-6"          #'+workspace/switch-to-5
+         "C-M-s-7"          #'+workspace/switch-to-6
+         "C-M-s-8"          #'+workspace/switch-to-7
+         "C-M-s-9"          #'+workspace/switch-to-8
+         "C-M-s-0"          #'+workspace/switch-to-9
+         "C-M-s-`"          #'+workspace/switch-to
          "C-M-s--"          #'+workspace:switch-previous
          "C-M-s-="          #'+workspace:switch-next
          "C-M-s-<escape>"   #'+workspace/delete
@@ -70,6 +74,12 @@
          "C-s-<right>"      (λ! (evil-window-decrease-width 3))
          "C-s-<up>"         (λ! (evil-window-increase-height 3))
          "C-s-<down>"       (λ! (evil-window-decrease-height 3))
+         "M-s-RET"          (λ! (if toggle-window-maximization
+                                  (progn (evil-resize-window (- (frame-width) 1) t)
+                                         (evil-resize-window (- (frame-width) 1) nil))
+                                    (balance-windows))
+                                (setq toggle-window-maximization (not toggle-window-maximization)))
+
          "C-M-s-<left>"     #'+evil/window-move-left
          "C-M-s-<right>"    #'+evil/window-move-right
          "C-M-s-<up>"       #'+evil/window-move-up
@@ -83,7 +93,7 @@
          "C-M-s-v"          #'lsp-extend-selection
          "C-M-s-b"          #'+vertico/switch-workspace-buffer
          "C-M-s-e"          #'kill-current-buffer ;; k
-         "M-s-RET"          #'doom/window-maximize-buffer
+         ;; "M-s-RET"          #'doom/window-maximize-buffer
          "C-M-s-,"          #'previous-buffer
          "C-M-s-."          #'next-buffer
          "C-M-s-<f1>"       #'+treemacs/toggle
@@ -93,13 +103,14 @@
          "C-M-s-<f5>"       #'vc-msg-show
          "C-s-n"            #'winner-undo
          "C-s-e"            #'winner-redo
-
          "C-M-<f7>"         #'+default/diagnostics
          "C-M-<f8>"         #'+lookup/definition
          "C-M-<f9>"         #'+lookup/references
          "C-M-<f10>"        #'+lookup/implementations
          "C-M-<f11>"        #'lsp-ui-doc-show
          "C-M-<f12>"        #'lsp-execute-code-action
+         "C-M-<f18>"        #'consult-lsp-symbols
+         "C-M-<f19>"        #'lsp-ui-peek--goto-xref-other-window
          ;; "C-M-s-<f8>"       #'lsp-ui-peek-find-definitions
          ;; "C-M-s-<f9>"       #'lsp-ui-peek-find-references
          ;; "C-M-s-<f10>"      #'lsp-ui-peek-find-implementation
@@ -110,7 +121,19 @@
          ;; "C-M-s-<f6>"       #'lsp-ui-doc-hide
          ;; "C-M-s-<f6>"       #'lsp-ui-doc-unfocus-frame
          ;; "C-M-s-<f5>"       #'lsp-ui-doc-focus-frame
+         "C-s-r"            (λ! (+lookup/online (read-string "whachya want🦀? ") "Rust Docs"))
+         "C-s-c"            (λ! (+lookup/online (read-string "whachya want📦? ") "Rust Crates"))
+         "C-s-g"            (λ! (+lookup/online (read-string "whachya want🌍? ") "Google"))
+         "C-s-s"            (λ! (+lookup/online (read-string "whachya want🥅? ") "SourceGraph"))
+         "C-s-h"            (λ! (+lookup/online (read-string "whachya want🐙? ") "Github"))
+         "C-s-w"            (λ! (+lookup/online (read-string "whachya want♾️? ") "Internet Computer Wiki"))
 
+         "C-M-<f16>"        #'popper-toggle-type
+         "C-M-s-<f16>"      #'popper-toggle-latest
+         "C-M-s-<268632080>" #'popper-cycle
+         "C-M-s-<f17>"      (λ! (org-roam-capture-notes-regarding-current-jira-task "q"))
+         "C-M-s-<f18>"      (λ! (org-roam-capture-notes-regarding-current-jira-task "n"))
+         "C-M-s-<f19>"      (λ! (org-roam-capture-notes-regarding-current-jira-task "t"))
          "C-M-s-<tab>"      #'burly-bookmark-frames
          ;; "C-M-s-<f19>"      #'burly-bookmark-windows
          ;; "C-M-s-<f19>"      #'burly-open-last-bookmark
@@ -130,6 +153,9 @@
       :desc "ranger"
       "o o" #'ranger)
 #+end_src
+
+#+RESULTS:
+: ranger
 
 ** avy
 #+begin_src emacs-lisp
@@ -160,6 +186,7 @@
   (+vterm/here t)
   (doom/window-maximize-buffer)
   (raise-frame)
+  (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
   (evil-insert 0))
 #+end_src
 *** window kill
@@ -422,10 +449,10 @@ awesome experience during buffer switching with exwm and browser
 * packages
 ** TODO activity-watch
 #+begin_src emacs-lisp
-;; (use-package! activity-watch-mode
-;;   :after org
-;;   :config
-;;   (global-activity-watch-mode))
+(use-package! activity-watch-mode
+  ;; :after org
+  :config
+  (global-activity-watch-mode))
 #+end_src
 ** anki-editor
 #+begin_src emacs-lisp
@@ -646,6 +673,9 @@ awesome experience during buffer switching with exwm and browser
   ;; (setq lsp-ui-doc-position 'at-point)
 ;; )
 ;;(tooltip-mode)
+(setq lsp-ui-sideline-enable nil)
+(setq lsp-ui-sideline-show-hover nil)
+(setq lsp-ui-peek-always-show t)
 #+end_src
 ** jupyter
 - jupyter-rust https://github.com/nnicandro/emacs-jupyter/issues/123
@@ -701,24 +731,24 @@ awesome experience during buffer switching with exwm and browser
 ;;                      counsel--search-request-data-zhihu))
 
 (setq +lookup-provider-url-alist '(
- ("Rust Crates" +lookup--online-backend-docs-rs "https://docs.rs/%s/latest")
- ("Doom Emacs issues" "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
+ ("Rust Crates" "https://docs.rs/releases/search?query=%s")
+ ("Rust Docs" "https://doc.rust-lang.org/std/?search=%s")
+ ("SourceGraph" "https://sourcegraph.com/search?q=context:global+repo:%%5Egithub%%5C.com/dfinity.%%2B%%24+%s&patternType=regexp&case=yes")
+ ("Internet Computer Wiki" "https://wiki.internetcomputer.org/w/index.php?search=%s")
  ("Google" +lookup--online-backend-google "https://google.com/search?q=%s")
- ("Google images" "https://www.google.com/images?q=%s")
- ("Google maps" "https://maps.google.com/maps?q=%s")
- ("Project Gutenberg" "http://www.gutenberg.org/ebooks/search/?query=%s")
- ("DuckDuckGo" +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
  ("DevDocs.io" "https://devdocs.io/#q=%s")
  ("StackOverflow" "https://stackoverflow.com/search?q=%s")
  ("Github" "https://github.com/search?ref=simplesearch&q=%s")
  ("Youtube" "https://youtube.com/results?aq=f&oq=&search_query=%s")
  ("Wolfram alpha" "https://wolframalpha.com/input/?i=%s")
  ("Wikipedia" "https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s")
- ("MDN" "https://developer.mozilla.org/en-US/search?q=%s")
- ("Rust Docs" "https://doc.rust-lang.org/std/?search=%s")
- ;; ("Rust Cargo"
- ;;  (defun nil "https://docs.rs/%s/latest"))
- ))
+
+ ("Google images" "https://www.google.com/images?q=%s")
+ ("Google maps" "https://maps.google.com/maps?q=%s")
+ ("Doom Emacs issues" "https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s")
+ ("Project Gutenberg" "http://www.gutenberg.org/ebooks/search/?query=%s")
+ ("DuckDuckGo" +lookup--online-backend-duckduckgo "https://duckduckgo.com/?q=%s")
+))
 ;; (add-to-list '+lookup-provider-url-alist
 ;;              '("zhihu" +lookup--online-backend-zhihu "https://www.zhihu.com/search?type=content&q=%25s"))
 
@@ -728,6 +758,24 @@ awesome experience during buffer switching with exwm and browser
 ;;           (alist-get 'suggest data)))
 
 #+end_src
+
+#+RESULTS:
+| Rust Crates       | https://docs.rs/%s/latest                                                                                               |                                |
+| Doom Emacs issues | https://github.com/hlissner/doom-emacs/issues?q=is%%3Aissue+%s                                                          |                                |
+| Google            | +lookup--online-backend-google                                                                                          | https://google.com/search?q=%s |
+| Google images     | https://www.google.com/images?q=%s                                                                                      |                                |
+| Google maps       | https://maps.google.com/maps?q=%s                                                                                       |                                |
+| Project Gutenberg | http://www.gutenberg.org/ebooks/search/?query=%s                                                                        |                                |
+| DuckDuckGo        | +lookup--online-backend-duckduckgo                                                                                      | https://duckduckgo.com/?q=%s   |
+| DevDocs.io        | https://devdocs.io/#q=%s                                                                                                |                                |
+| StackOverflow     | https://stackoverflow.com/search?q=%s                                                                                   |                                |
+| Github            | https://github.com/search?ref=simplesearch&q=%s                                                                         |                                |
+| Youtube           | https://youtube.com/results?aq=f&oq=&search_query=%s                                                                    |                                |
+| Wolfram alpha     | https://wolframalpha.com/input/?i=%s                                                                                    |                                |
+| Wikipedia         | https://wikipedia.org/search-redirect.php?language=en&go=Go&search=%s                                                   |                                |
+| MDN               | https://developer.mozilla.org/en-US/search?q=%s                                                                         |                                |
+| Rust Docs         | https://doc.rust-lang.org/std/?search=%s                                                                                |                                |
+| SourceGraph       | https://sourcegraph.com/search?q=context:global+repo:%%5Egithub%%5C.com/dfinity.%%2B%%24+%s&patternType=regexp&case=yes |                                |
 
 
 #+begin_src emacs-lisp
@@ -990,8 +1038,32 @@ awesome experience during buffer switching with exwm and browser
   :config
   (setq jiralib-url "https://dfinity.atlassian.net"
         org-jira-working-dir "~/org/jira"
-        org-jira-download-dir "~/org/jira/attachments"))
+        org-jira-download-dir "~/org/jira/attachments")
+  (defun org-roam-capture-notes-regarding-current-jira-task (keys)
+    (let* ((jira-node-id (car (car (org-roam-db-query
+                                    [:select [nodes:id]
+                                     :from tags
+                                     :left-join nodes
+                                     :on (= tags:node-id nodes:id)
+                                     :where (and (like nodes:id (quote "%\"SDK-%\"%"))
+                                                 (like nodes:properties (quote "%In Progress%")))]))))
+           (notes-node (org-roam-node-from-id (car (car (org-roam-db-query
+                                                         [:select [nodes:id]
+                                                          :from tags
+                                                          :left-join nodes
+                                                          :on (= tags:node-id nodes:id)
+                                                          :where (= tag $s1)
+                                                          ] jira-node-id))))))
+
+      (if notes-node
+          (org-roam-capture- :node notes-node :keys keys)
+        (let ((new-jira-ticket-capture-template (-filter (lambda (template) (string-match-p (car (cdr template)) "new jira ticket")) org-roam-capture-templates)))
+         (org-roam-node-find nil jira-node-id nil :templates new-jira-ticket-capture-template))))))
 #+end_src
+
+#+RESULTS:
+: t
+
 ** org-mind-map
 #+begin_src emacs-lisp
 (use-package! org-mind-map
@@ -1029,13 +1101,16 @@ awesome experience during buffer switching with exwm and browser
       ))
   (setq org-roam-capture-templates
         '(("n" "default" plain "%?"
-           :target (file+head "pkms/${slug}.org" "#+title: ${title}\n")
+           :target (file+head "pkms/${slug}.org" "${title}\n\n")
            :unnarrowed t)
-          ("q" "question" entry "* [[id:66d7d310-3832-4bf9-9be2-df6e1aeccd61][question]] %?"
-           :target (file+head+olp "pkms/${slug}.org" "#+title: ${title}\n" ("Inbox"))
+          ("j" "new jira ticket" entry "* %?"
+           :target (file+head+olp "pkms/${slug}.org" "${title}\n#+filetags: ${title}\n\n" ("Inbox"))
+           :unnarrowed t)
+          ("q" "question" entry "* [[id:66d7d310-3832-4bf9-9be2-df6e1aeccd61][QUESTION]] %?"
+           :target (file+head+olp "pkms/${slug}.org" "${title}\n\n" ("Inbox"))
            :unnarrowed t)
           ("t" "todo" entry "* TODO %?"
-           :target (file+head+olp "pkms/${slug}.org" "#+title: ${title}\n" ("Inbox"))
+           :target (file+head+olp "pkms/${slug}.org" "${title}\n\n" ("Inbox"))
            :unnarrowed t)))
 
   ;; ;; what does it do?
@@ -1202,6 +1277,24 @@ awesome experience during buffer switching with exwm and browser
 #+begin_src emacs-lisp
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode)
 #+end_src
+** TODO popper
+#+begin_src emacs-lisp
+(use-package! popper
+  :bind (("C-`"   . popper-toggle-latest)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type))
+  :init
+  (setq popper-reference-buffers
+    '("\\*Messages\\*"
+          "Output\\*$"
+          "\\*Async Shell Command\\*"
+          "\\*xwidget webkit: "
+          webkit-mode
+          help-mode
+          compilation-mode))
+  (popper-mode +1)
+  (popper-echo-mode +1))                ; For echo area hints
+#+end_src
 ** powerthesaurus
 #+begin_src emacs-lisp
 (use-package! powerthesaurus)
@@ -1279,8 +1372,8 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
   :config
   (setq +snippets-dir "/home/m/Templates/snippets/"))
 #+end_src
-** webkit
-#+begin_src emacs-lisp
+** COMMENT +begin_src
+#webkit emacs-lisp
 ;; (use-package! webkit
 ;; :config
 ;; (use-package 'webkit-ace) ;; If you want link hinting
@@ -1300,5 +1393,28 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
                                      :n "<down>" #'xwidget-webkit-scroll-down
                                      :in "<escape>" #'xwidget-webkit-end-edit-textarea)
   (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
+)
+#+end_src
+** zoxide
+#+begin_src emacs-lisp
+(use-package! zoxide)
+#+end_src
+* extra
+#+begin_src emacs-lisp
+(defun emacs-open-file-in-project-from-uri  (full-uri)
+  (let* (
+         (uri-data (s-split "&" (s-chop-prefix "emacs://open?" full-uri)))
+         (uri-values (mapcar (lambda (x) (car (last (s-split "=" x)))) uri-data))
+         (filepath (nth 0 uri-values))
+         (line (string-to-number (nth 1 uri-values)))
+         (column (string-to-number (nth 2 uri-values)))
+         (repo-name (car (s-split "/" (s-chop-prefix "/Users/mnl/Desktop/" filepath))))
+         (project-path (concat "~/Desktop/" repo-name))
+        )
+    (+workspace-switch repo-name)
+    (find-file filepath)
+    (goto-char column)
+    (forward-line (1- line))
+    )
 )
 #+end_src
