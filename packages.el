@@ -7,7 +7,6 @@
 (package! company-tabnine)
 (package! telega) ;; TODO
 (package! graphviz-dot-mode)
-;; (package! company-graphviz-dot)
 (package! anki-editor)
 (package! git-timemachine)
 (package! org-caldav)
@@ -32,13 +31,10 @@
 (package! gitmoji :recipe (:host github :repo "janusvm/emacs-gitmoji" :files ("*.el" "data")))
 (package! org-transclusion)
 (package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map" :files ("*.el")))
-;; (package! org-anki :recipe (:host github :repo "smallstepman/org-anki" :files ("*.el")))
 (package! shackle) ;; TODO
 (package! string-inflection :recipe (:host github :repo "akicho8/string-inflection" :files ("string-inflection.el")))
-;;(unpin! rustic)
 (package! crdt) ;; TODO
 (package! bitwarden :recipe (:host github :repo "seanfarley/emacs-bitwarden" :files ("bitwarden.el")))
-;; (package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
 (package! xwwp :recipe (:host github :repo "BlueFlo0d/xwwp" :files ("*.el" "*.js" "*.css" "*" )))
 (package! org-roam-timestamps)
 (package! org-roam-bibtex)
@@ -47,9 +43,7 @@
 (package! osm)
 (package! powerthesaurus) ;; TODO https://github.com/SavchenkoValeriy/emacs-powerthesaurus
 (package! dired-dragon :recipe (:host github :repo "jeetelongname/dired-dragon"))
-;; (package! tab-bar-echo-area)
 (package! burly)
-;; (package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
 (package! elcord)
 (package! org-jira)
 (unpin! lsp-mode)
@@ -57,7 +51,16 @@
 (package! hass) ;; TODO home-assistant integration
 (package! vc-msg)
 (package! popper)
-
+(package! power-mode :recipe (:host github :repo "elizagamedev/power-mode.el" :files ("*.el")))
+(package! git-link)
+(package! activity-watch-mode)
+(package! ctable)
+;; (package! company-graphviz-dot)
+;; (package! org-anki :recipe (:host github :repo "smallstepman/org-anki" :files ("*.el")))
+;;(unpin! rustic)
+;; (package! webkit :recipe (:host github :repo "akirakyle/emacs-webkit" :files ("*.js" "*.css" "*.el" "*.so" "*.h" "*.c" "Makefile")  :pre-build ("make")))
+;; (package! tab-bar-echo-area)
+;; (package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
 ;; (package! exwm)
@@ -75,10 +78,8 @@
 ;; (package! counsel-spotify)
 ;; (package! spotify)
 ;; (package! which-key-posframe)
-(package! activity-watch-mode)
 ;; (package! graphql-mode)
 ;; (package! eaf)
-(package! ctable)
 ;; (package! deferred)
 ;; (package! epc)
 

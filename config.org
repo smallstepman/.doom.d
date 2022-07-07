@@ -30,8 +30,13 @@
   ;;   (set-popup-rule! "^\\*eww" :ignore t))
   ;; (set-popup-rule! "^\\*Occur\\*$" :ignore nil :side 'bottom :quit t :select t)
   ;; (set-popup-rule! "^\\*info\\*$" :ignore t))
+(set-popup-rule! "^\\*xwidget" :side 'right :size 0.4)
 #+end_src
 ** TODO shackle
+#+begin_src emacs-lisp
+;; (use-package! shackle
+;;   :config )
+#+end_src
 ** TODO vertico-posframe
 #+begin_src emacs-lisp
 (use-package! vertico-posframe
@@ -634,6 +639,10 @@ awesome experience during buffer switching with exwm and browser
   :ensure
   :init (exec-path-from-shell-initialize))
 #+end_src
+** git-link
+#+begin_src emacs-lisp
+(use-package! git-link)
+#+end_src
 ** graphviz-dot
 #+begin_src emacs-lisp
 (use-package! graphviz-dot-mode
@@ -680,6 +689,10 @@ awesome experience during buffer switching with exwm and browser
 ** jupyter
 - jupyter-rust https://github.com/nnicandro/emacs-jupyter/issues/123
 *** TODO [[https://sqrtminusone.xyz/posts/2021-05-01-org-python/][Replacing Jupyter Notebook with Org Mode]] [2021-12-28 wto 21:51]
+** magit-todos
+#+begin_src emacs-lisp
+(magit-todos-mode t)
+#+end_src
 ** KILL mini-modeline
 #+begin_src emacs-lisp
 (use-package! mini-modeline
@@ -1295,6 +1308,11 @@ awesome experience during buffer switching with exwm and browser
   (popper-mode +1)
   (popper-echo-mode +1))                ; For echo area hints
 #+end_src
+** power-mode
+#+begin_src emacs-lisp
+(use-package! power-mode)
+  ;; :hook ((after-init-hook . power-mode))
+#+end_src
 ** powerthesaurus
 #+begin_src emacs-lisp
 (use-package! powerthesaurus)
@@ -1308,6 +1326,7 @@ awesome experience during buffer switching with exwm and browser
 (use-package! rustic
   :config
   (setq lsp-rust-server 'rust-analyzer)
+  (setq rustic-clippy-arguments "--verbose --tests --benches -- -D clippy::all")
   (setq rustic-lsp-server 'rust-analyzer))
 ;; (after! rustic
 ;;   (setq lsp-rust-server 'rust-analyzer)
@@ -1372,14 +1391,6 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
   :config
   (setq +snippets-dir "/home/m/Templates/snippets/"))
 #+end_src
-** COMMENT +begin_src
-#webkit emacs-lisp
-;; (use-package! webkit
-;; :config
-;; (use-package 'webkit-ace) ;; If you want link hinting
-;; (use-package 'webkit-dark))
-#+end_src
-
 ** xwidgets & xwwp
 #+begin_src emacs-lisp
 (use-package! xwwp-full
@@ -1393,6 +1404,8 @@ cool idea, but requires a lot of work: integrate perspectives, workspaces and sy
                                      :n "<down>" #'xwidget-webkit-scroll-down
                                      :in "<escape>" #'xwidget-webkit-end-edit-textarea)
   (setq +lookup-open-url-fn #'+lookup-xwidget-webkit-open-url-fn)
+  (setq browse-url-browser-function 'xwidget-webkit-browse-url)
+
 )
 #+end_src
 ** zoxide
