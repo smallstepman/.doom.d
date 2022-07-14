@@ -3,7 +3,6 @@
 :END:
 #+title: emacs
 
-- shift-!-! : execute shell command and print output directly in buffer
 
 * ideas
 ** search docs.rs via completion framework
@@ -26,3 +25,10 @@ dash
 * packages
 - https://github.com/rnkn/olivetti - window margins
 -
+
+* wow
+** replace in whole project
+=SPC s p foo C-; E C-c C-p :%s/foo/bar/g RET Z Z=
+https://hungyi.net/posts/doom-emacs-search-replace-project/
+** execute shell command and print output directly in buffer
+=shift-!-!=
