@@ -38,7 +38,7 @@
 (package! xwwp :recipe (:host github :repo "BlueFlo0d/xwwp" :files ("*.el" "*.js" "*.css" "*" )))
 (package! org-roam-timestamps)
 (package! org-roam-bibtex)
-(package! dirvish :recipe (:host github :repo "alexluigit/dirvish" :files ("*.el")))
+;; (package! dirvish :recipe (:host github :repo "alexluigit/dirvish" :files ("*.el")))
 (package! org-tree-slide)
 (package! osm)
 (package! powerthesaurus) ;; TODO https://github.com/SavchenkoValeriy/emacs-powerthesaurus
