@@ -7,9 +7,9 @@
 #+end_src
 * looks
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrains Mono" :size 18 :weight 'semi-light)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 28 :weight 'semi-light)
       doom-theme 'doom-molokai
-      doom-variable-pitch-font (font-spec :family "sans" :size 18)
+      doom-variable-pitch-font (font-spec :family "sans" :size 28)
       display-line-numbers-type nil
       fancy-splash-image "~/Pictures/8bitwinter2.png")
 #+end_src
@@ -27,14 +27,14 @@
 ** TODO shackle
 ** TODO vertico-posframe
 #+begin_src emacs-lisp
-;; (use-package! vertico-posframe
-;;   :hook (vertico-mode . vertico-posframe-mode)
-;;   :config
-;;   (add-hook 'doom-after-reload-hook #'posframe-delete-all)
-;;   (vertico-posframe-mode 1)
-;;   (setq vertico-posframe-parameters
-;;       '((left-fringe . 8)
-;;         (right-fringe . 8))))
+(use-package! vertico-posframe
+  :hook (vertico-mode . vertico-posframe-mode)
+  :config
+  (add-hook 'doom-after-reload-hook #'posframe-delete-all)
+  (vertico-posframe-mode 1)
+  (setq vertico-posframe-parameters
+      '((left-fringe . 8)
+        (right-fringe . 8))))
 #+end_src
 * keymap
 #+begin_src emacs-lisp
@@ -448,6 +448,12 @@ awesome experience during buffer switching with exwm and browser
         :ne "M-T" #'calibredb-set-metadata--title
         :ne "M-c" #'calibredb-set-metadata--comments))
 #+end_src
+** conda
+#+begin_src emacs-lisp
+(use-package! conda
+  :config
+  (setq conda-anaconda-home "/home/m/miniforge"))
+#+end_src
 ** deft
 #+begin_src emacs-lisp
 (use-package! deft
@@ -473,6 +479,12 @@ awesome experience during buffer switching with exwm and browser
 #+begin_src emacs-lisp
 ;; (use-package! dired-dragon
 ;;   :after dired)
+#+end_src
+** eaf
+#+begin_src emacs-lisp
+;; (use-package! eaf
+;;   :load-path "emacs-application-framework/"
+;;   )
 #+end_src
 ** elcord
 #+begin_src emacs-lisp

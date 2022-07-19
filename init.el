@@ -19,7 +19,7 @@
 
        :completion
        company             ; the ultimate code completion backend
-       (vertico +icons +childframe)             ; the search engine of the future
+       (vertico +icons)             ; the search engine of the future
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;ivy               ; a search engine for love and life
@@ -99,8 +99,8 @@
        :os
 
        :lang
-       beancount
-       cc
+       (beancount +lsp)
+       (cc +lsp)
        common-lisp
        csharp
        data
@@ -126,7 +126,7 @@
         +journal
         +present)
        plantuml
-       (python +cython +lsp +pyright)
+       (python +cython +lsp +pyright +pyenv +conda +poetry)
        rest
        (rust +lsp)
        (scheme +guile)

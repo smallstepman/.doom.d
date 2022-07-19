@@ -47,8 +47,10 @@
 (package! dired-dragon :recipe (:host github :repo "jeetelongname/dired-dragon"))
 ;; (package! tab-bar-echo-area)
 (package! burly)
-;; (package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "cd54c3f022a47afc0a540eee117efc38289ae72d")
+(package! vertico-posframe :recipe (:host github :repo "tumashu/vertico-posframe")    :pin "7ca364d7afc0a540eee117efc38289ae72d")
 (package! elcord)
+(unpin! conda)
+(package! conda :recipe (:host github :repo "necaris/conda.el") :pin "f34c1218e5f9a759646f68f6afd8f9b8fd4022cc")
 ;; TODO
 ;; (package! narrow-region-other-window)
 ;; (package! svg-tag-mode) ;
